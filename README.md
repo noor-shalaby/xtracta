@@ -1,2 +1,2 @@
-# xtracta
+# Xtracta
 Universal extraction mobile app.
