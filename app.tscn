@@ -1,16 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwjq7i0unhh04"]
+[gd_scene load_steps=6 format=3 uid="uid://bwjq7i0unhh04"]
 
 [ext_resource type="PackedScene" uid="uid://ci1dgaurp7eyb" path="res://file_button.tscn" id="1_j6dmo"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sghk0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6dmo"]
+bg_color = Color(0.12941177, 0.23529412, 0.31764707, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbwvd"]
+bg_color = Color(0.39607844, 0.5803922, 0.69411767, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4801"]
 content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-bg_color = Color(0.1882353, 0.21176471, 0.30980393, 1)
+bg_color = Color(0.12941177, 0.23529412, 0.31764707, 1)
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_j6dmo"]
+Button/colors/font_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/styles/normal = SubResource("StyleBoxFlat_j6dmo")
+Button/styles/pressed = SubResource("StyleBoxFlat_qbwvd")
+Label/colors/font_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_i4801")
 
 [node name="App" type="Control"]
 layout_mode = 3
@@ -19,6 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_j6dmo")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -27,7 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.6745098, 0.7294118, 0.76862746, 1)
+color = Color(0.39607844, 0.5803922, 0.69411767, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -41,12 +64,10 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_sghk0")
 
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.9411765, 0.9411765, 0.85882354, 1)
 theme_override_font_sizes/font_size = 64
 text = "XTRACTA"
 horizontal_alignment = 1
