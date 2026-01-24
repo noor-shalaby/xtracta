@@ -24,6 +24,7 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+modulate = Color(0.8666667, 0.68235296, 0.827451, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
