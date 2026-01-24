@@ -4,6 +4,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ui347"]
 bg_color = Color(0.1882353, 0.21176471, 0.30980393, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="FileButton" type="Button"]
 custom_minimum_size = Vector2(1064, 128)
