@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci1dgaurp7eyb"]
+[gd_scene load_steps=4 format=3 uid="uid://ci1dgaurp7eyb"]
 
 [ext_resource type="Texture2D" uid="uid://7jliqa5r7ash" path="res://assets/zip-file-svgrepo-com.svg" id="1_ui347"]
 
@@ -9,11 +9,19 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7y53h"]
+bg_color = Color(0.285814, 0.3177162, 0.44946903, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [node name="FileButton" type="Button"]
 custom_minimum_size = Vector2(1064, 128)
 offset_right = 8.0
 offset_bottom = 8.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ui347")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7y53h")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
