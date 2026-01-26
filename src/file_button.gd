@@ -35,7 +35,6 @@ func expand() -> void:
 	reset_tween()
 	tween.tween_property(self, "custom_minimum_size:y", default_min_height + content_files.size.y + 44, ANIMATION_DURATION)
 	tween.tween_property(content_files_container, "custom_minimum_size:y", content_files.size.y, ANIMATION_DURATION)
-	await tween.finished
 
 func collapse() -> void:
 	is_expanded = false
