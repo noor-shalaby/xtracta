@@ -1,6 +1,8 @@
 extends Button
 
 
+const ANIMATION_DURATION: float = 0.15
+
 @onready var file_icon: TextureRect = %FileIcon
 @onready var content_files_container: Control = %ContentFilesContainer
 @onready var content_files: Label = %ContentFiles
@@ -31,11 +33,11 @@ func reset_tween() -> void:
 func expand() -> void:
 	is_expanded = true
 	reset_tween()
-	tween.tween_property(self, "custom_minimum_size:y", default_min_height + content_files.size.y + 44, 0.2)
-	tween.tween_property(content_files_container, "custom_minimum_size:y", content_files.size.y, 0.2)
+	tween.tween_property(self, "custom_minimum_size:y", default_min_height + content_files.size.y + 44, ANIMATION_DURATION)
+	tween.tween_property(content_files_container, "custom_minimum_size:y", content_files.size.y, ANIMATION_DURATION)
 	await tween.finished
 
 func collapse() -> void:
 	is_expanded = false
 	reset_tween()
-	tween.tween_property(self, "custom_minimum_size:y", default_min_height, 0.2)
+	tween.tween_property(self, "custom_minimum_size:y", default_min_height, ANIMATION_DURATION)
