@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://7jliqa5r7ash" path="res://assets/zip-file-svgrepo-com.svg" id="1_ui347"]
 
 [node name="FileButton" type="Button"]
+clip_contents = true
 custom_minimum_size = Vector2(1064, 128)
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 1064.0
+offset_bottom = 128.0
 script = ExtResource("1_7n78r")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -34,17 +35,21 @@ size_flags_vertical = 0
 texture = ExtResource("1_ui347")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+clip_contents = true
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="FileName" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_vertical = 0
 theme_override_font_sizes/font_size = 28
 text = "project (1).zip"
 
@@ -52,7 +57,34 @@ text = "project (1).zip"
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 10
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "19/01/25 11:17 PM"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="ContentFilesContainer" type="Control" parent="."]
+unique_name_in_owner = true
+clip_contents = true
+anchors_preset = 0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 1048.0
+offset_bottom = 128.0
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="ContentFiles" type="Label" parent="ContentFilesContainer"]
+unique_name_in_owner = true
+modulate = Color(0.93333334, 0.93333334, 0.93333334, 1)
+clip_contents = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 182.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "project.css
+project.html"
+clip_text = true
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
