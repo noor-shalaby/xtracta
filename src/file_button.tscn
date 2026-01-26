@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://ci1dgaurp7eyb"]
+[gd_scene load_steps=3 format=3 uid="uid://ci1dgaurp7eyb"]
 
+[ext_resource type="Script" uid="uid://db5f3q4jeikj0" path="res://src/file_button.gd" id="1_7n78r"]
 [ext_resource type="Texture2D" uid="uid://7jliqa5r7ash" path="res://assets/zip-file-svgrepo-com.svg" id="1_ui347"]
 
 [node name="FileButton" type="Button"]
 custom_minimum_size = Vector2(1064, 128)
 offset_right = 8.0
 offset_bottom = 8.0
+script = ExtResource("1_7n78r")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -15,36 +17,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 16
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="FileIcon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 modulate = Color(0.8666667, 0.68235296, 0.827451, 1)
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_vertical = 0
 texture = ExtResource("1_ui347")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_top = 16
+theme_override_constants/margin_top = 8
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer"]
+[node name="FileName" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 28
 text = "project (1).zip"
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="LastUpdated" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 24
 text = "19/01/25 11:17 PM"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
