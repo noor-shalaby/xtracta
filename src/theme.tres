@@ -1,14 +1,7 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://vu4gxjlel247"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://vu4gxjlel247"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6dmo"]
 bg_color = Color(0.12941177, 0.23529412, 0.31764707, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbwvd"]
-bg_color = Color(0.39607844, 0.5803922, 0.69411767, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -27,7 +20,8 @@ corner_detail = 5
 [resource]
 Button/colors/font_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_j6dmo")
 Button/styles/normal = SubResource("StyleBoxFlat_j6dmo")
-Button/styles/pressed = SubResource("StyleBoxFlat_qbwvd")
+Button/styles/pressed = SubResource("StyleBoxFlat_j6dmo")
 Label/colors/font_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_i4801")
