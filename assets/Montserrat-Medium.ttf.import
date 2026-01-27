@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c7g21b78v18tf"
-path="res://.godot/imported/Montserrat-Black.ttf-6ecc143729299236da9ed43339e89d27.fontdata"
+uid="uid://c42biue181eeu"
+path="res://.godot/imported/Montserrat-Medium.ttf-6c1fbbde4ebff10602ee4eb2a48ac610.fontdata"
 
 [deps]
 
-source_file="res://assets/Montserrat-Black.ttf"
-dest_files=["res://.godot/imported/Montserrat-Black.ttf-6ecc143729299236da9ed43339e89d27.fontdata"]
+source_file="res://assets/Montserrat-Medium.ttf"
+dest_files=["res://.godot/imported/Montserrat-Medium.ttf-6c1fbbde4ebff10602ee4eb2a48ac610.fontdata"]
 
 [params]
 

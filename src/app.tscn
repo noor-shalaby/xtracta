@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bwjq7i0unhh04"]
 
 [ext_resource type="PackedScene" uid="uid://ci1dgaurp7eyb" path="res://src/file_button.tscn" id="1_j6dmo"]
+[ext_resource type="FontFile" uid="uid://dqrwl60cd7emn" path="res://assets/Montserrat-ExtraBold.ttf" id="2_7unma"]
 [ext_resource type="Texture2D" uid="uid://dojqom42x5hwu" path="res://assets/background.png" id="2_o6we8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twjmp"]
@@ -47,6 +48,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_twjmp")
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer" unique_id=1423104731]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_7unma")
 theme_override_font_sizes/font_size = 64
 text = "XTRACTA"
 horizontal_alignment = 1

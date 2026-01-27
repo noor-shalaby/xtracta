@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://db5f3q4jeikj0" path="res://src/file_button.gd" id="1_7n78r"]
 [ext_resource type="Texture2D" uid="uid://7jliqa5r7ash" path="res://assets/zip-file-svgrepo-com.svg" id="1_ui347"]
+[ext_resource type="FontFile" uid="uid://c42biue181eeu" path="res://assets/Montserrat-Medium.ttf" id="3_tysqo"]
+[ext_resource type="FontFile" uid="uid://ck3o7rpr3plk6" path="res://assets/Montserrat-Bold.ttf" id="4_tysqo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_palxs"]
 content_margin_left = 4.0
@@ -81,6 +83,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_tysqo")
 theme_override_font_sizes/font_size = 40
 text = "project (1).zip"
 
@@ -89,6 +92,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 0.78431374)
+theme_override_fonts/font = ExtResource("3_tysqo")
 theme_override_font_sizes/font_size = 24
 text = "19/01/25 11:17 PM"
 horizontal_alignment = 2
@@ -100,6 +104,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
+theme_override_fonts/font = ExtResource("4_tysqo")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_7n78r")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7n78r")
@@ -119,13 +124,13 @@ mouse_filter = 2
 
 [node name="ContentFiles" type="Label" parent="ContentFilesContainer" unique_id=1202644961]
 unique_name_in_owner = true
-modulate = Color(0.93333334, 0.93333334, 0.93333334, 1)
 clip_contents = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 182.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_tysqo")
 theme_override_font_sizes/font_size = 32
 text = "project.css
 project.html"
