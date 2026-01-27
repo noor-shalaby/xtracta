@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwjq7i0unhh04"]
+[gd_scene format=3 uid="uid://bwjq7i0unhh04"]
 
 [ext_resource type="PackedScene" uid="uid://ci1dgaurp7eyb" path="res://src/file_button.tscn" id="1_j6dmo"]
 [ext_resource type="Theme" uid="uid://vu4gxjlel247" path="res://src/theme.tres" id="1_twjmp"]
 
-[node name="App" type="Control"]
+[node name="App" type="Control" unique_id=533816554]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_twjmp")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1989657890]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.39607844, 0.5803922, 0.69411767, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=724565887]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,12 +29,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=964890850]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer" unique_id=1423104731]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 64
@@ -42,7 +42,7 @@ text = "XTRACTA"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1349935606]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 8
@@ -50,27 +50,27 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer" unique_id=1002011998]
 layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer" unique_id=802498738]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="FileButton" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_j6dmo")]
+[node name="FileButton" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=555910718 instance=ExtResource("1_j6dmo")]
 layout_mode = 2
 
-[node name="FileButton2" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_j6dmo")]
+[node name="FileButton2" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1946942945 instance=ExtResource("1_j6dmo")]
 layout_mode = 2
 
-[node name="FileButton3" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_j6dmo")]
+[node name="FileButton3" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1547053489 instance=ExtResource("1_j6dmo")]
 layout_mode = 2
 
-[node name="FileButton4" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_j6dmo")]
+[node name="FileButton4" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1659445921 instance=ExtResource("1_j6dmo")]
 layout_mode = 2
 
-[node name="FileButton5" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_j6dmo")]
+[node name="FileButton5" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1691147234 instance=ExtResource("1_j6dmo")]
 layout_mode = 2

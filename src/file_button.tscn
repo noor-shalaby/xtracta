@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci1dgaurp7eyb"]
+[gd_scene format=3 uid="uid://ci1dgaurp7eyb"]
 
 [ext_resource type="Script" uid="uid://db5f3q4jeikj0" path="res://src/file_button.gd" id="1_7n78r"]
 [ext_resource type="Texture2D" uid="uid://7jliqa5r7ash" path="res://assets/zip-file-svgrepo-com.svg" id="1_ui347"]
@@ -10,14 +10,14 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[node name="FileButton" type="Button"]
+[node name="FileButton" type="Button" unique_id=236115662]
 clip_contents = true
-custom_minimum_size = Vector2(1064, 128)
+custom_minimum_size = Vector2(1064, 160)
 offset_right = 1064.0
 offset_bottom = 128.0
 script = ExtResource("1_7n78r")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1991835650]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,39 +25,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
+theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_bottom = 32
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=546690201]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 16
 
-[node name="FileIcon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="FileIcon" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1280180287]
 unique_name_in_owner = true
 modulate = Color(0.8666667, 0.68235296, 0.827451, 1)
 layout_mode = 2
 texture = ExtResource("1_ui347")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=388366540]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer" unique_id=1858605174]
 clip_contents = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="FileName" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="FileName" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1181920166]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "project (1).zip"
 
-[node name="LastUpdated" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="LastUpdated" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1527693881]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -67,30 +67,30 @@ text = "19/01/25 11:17 PM"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="ExtractButton" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="ExtractButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=526437149]
 custom_minimum_size = Vector2(192, 96)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.12941177, 0.23529412, 0.31764707, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_7n78r")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7n78r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7n78r")
 text = "EXTRACT"
 
-[node name="ContentFilesContainer" type="Control" parent="."]
+[node name="ContentFilesContainer" type="Control" parent="." unique_id=1570226949]
 unique_name_in_owner = true
 clip_contents = true
 anchors_preset = 0
 offset_left = 128.0
-offset_top = 128.0
+offset_top = 160.0
 offset_right = 1048.0
-offset_bottom = 128.0
+offset_bottom = 160.0
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="ContentFiles" type="Label" parent="ContentFilesContainer"]
+[node name="ContentFiles" type="Label" parent="ContentFilesContainer" unique_id=1202644961]
 unique_name_in_owner = true
 modulate = Color(0.93333334, 0.93333334, 0.93333334, 1)
 clip_contents = true
@@ -99,7 +99,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 182.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 32
 text = "project.css
 project.html"
 clip_text = true
