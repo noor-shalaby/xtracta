@@ -67,7 +67,7 @@ text = "19/01/25 11:17 PM"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="ExtractButton" type="Button" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(128, 96)
 layout_mode = 2
 size_flags_horizontal = 8
