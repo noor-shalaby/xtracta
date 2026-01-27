@@ -1,7 +1,17 @@
 [gd_scene format=3 uid="uid://bwjq7i0unhh04"]
 
 [ext_resource type="PackedScene" uid="uid://ci1dgaurp7eyb" path="res://src/file_button.tscn" id="1_j6dmo"]
-[ext_resource type="Theme" uid="uid://vu4gxjlel247" path="res://src/theme.tres" id="1_twjmp"]
+[ext_resource type="Texture2D" uid="uid://dojqom42x5hwu" path="res://assets/background.png" id="2_o6we8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twjmp"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 5
 
 [node name="App" type="Control" unique_id=533816554]
 layout_mode = 3
@@ -10,7 +20,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_twjmp")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1989657890]
 layout_mode = 1
@@ -20,6 +29,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.39607844, 0.5803922, 0.69411767, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1513237779]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o6we8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=724565887]
 layout_mode = 1
@@ -33,6 +51,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_twjmp")
 
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer" unique_id=1423104731]
 layout_mode = 2

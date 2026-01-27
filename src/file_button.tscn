@@ -3,8 +3,32 @@
 [ext_resource type="Script" uid="uid://db5f3q4jeikj0" path="res://src/file_button.gd" id="1_7n78r"]
 [ext_resource type="Texture2D" uid="uid://7jliqa5r7ash" path="res://assets/zip-file-svgrepo-com.svg" id="1_ui347"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_palxs"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tysqo"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n78r"]
-bg_color = Color(0.8666667, 0.68235296, 0.827451, 1)
+bg_color = Color(0.5372549, 0.83137256, 0.34901962, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -15,6 +39,9 @@ clip_contents = true
 custom_minimum_size = Vector2(1064, 160)
 offset_right = 1064.0
 offset_bottom = 128.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_palxs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tysqo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tysqo")
 script = ExtResource("1_7n78r")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1991835650]
@@ -36,7 +63,7 @@ theme_override_constants/separation = 16
 
 [node name="FileIcon" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1280180287]
 unique_name_in_owner = true
-modulate = Color(0.8666667, 0.68235296, 0.827451, 1)
+modulate = Color(0.5372549, 0.83137256, 0.34901962, 1)
 layout_mode = 2
 texture = ExtResource("1_ui347")
 
@@ -72,7 +99,7 @@ custom_minimum_size = Vector2(192, 96)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.12941177, 0.23529412, 0.31764707, 1)
+theme_override_colors/font_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_7n78r")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7n78r")
