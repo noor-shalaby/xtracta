@@ -73,6 +73,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.12941177, 0.23529412, 0.31764707, 1)
+theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_7n78r")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7n78r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7n78r")
