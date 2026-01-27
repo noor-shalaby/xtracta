@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci1dgaurp7eyb"]
+[gd_scene load_steps=4 format=3 uid="uid://ci1dgaurp7eyb"]
 
 [ext_resource type="Script" uid="uid://db5f3q4jeikj0" path="res://src/file_button.gd" id="1_7n78r"]
 [ext_resource type="Texture2D" uid="uid://7jliqa5r7ash" path="res://assets/zip-file-svgrepo-com.svg" id="1_ui347"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n78r"]
+bg_color = Color(0.8666667, 0.68235296, 0.827451, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="FileButton" type="Button"]
 clip_contents = true
@@ -59,6 +66,17 @@ theme_override_font_sizes/font_size = 24
 text = "19/01/25 11:17 PM"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 96)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.12941177, 0.23529412, 0.31764707, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_7n78r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7n78r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7n78r")
+text = "EXTRACT"
 
 [node name="ContentFilesContainer" type="Control" parent="."]
 unique_name_in_owner = true
