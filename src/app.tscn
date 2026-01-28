@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bwjq7i0unhh04"]
 
+[ext_resource type="Script" uid="uid://doqclfn75cra1" path="res://src/app.gd" id="1_7unma"]
 [ext_resource type="PackedScene" uid="uid://ci1dgaurp7eyb" path="res://src/file_button.tscn" id="1_j6dmo"]
 [ext_resource type="FontFile" uid="uid://dqrwl60cd7emn" path="res://assets/Montserrat-ExtraBold.ttf" id="2_7unma"]
 [ext_resource type="Texture2D" uid="uid://dojqom42x5hwu" path="res://assets/background.png" id="2_o6we8"]
@@ -21,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7unma")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1513237779]
 layout_mode = 1
