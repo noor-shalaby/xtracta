@@ -38,7 +38,7 @@ corner_radius_bottom_left = 16
 
 [node name="FileButton" type="Button" unique_id=236115662]
 clip_contents = true
-custom_minimum_size = Vector2(1064, 160)
+custom_minimum_size = Vector2(0, 160)
 offset_right = 1064.0
 offset_bottom = 128.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_palxs")

@@ -57,10 +57,10 @@ vertical_alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1349935606]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer" unique_id=1002011998]
 layout_mode = 2
@@ -69,8 +69,9 @@ vertical_scroll_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer" unique_id=802498738]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 8
+theme_override_constants/separation = 16
 
 [node name="FileButton" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=555910718 instance=ExtResource("1_j6dmo")]
 layout_mode = 2
