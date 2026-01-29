@@ -69,9 +69,6 @@ func _add_file_to_ui(path: String) -> void:
 	file_button.last_updated.text = date_str
 	file_button.file_size.text = file_size_str
 	display_zip_root(path, file_button.content_files)
-	
-	# Connect the signal
-	file_button.pressed.connect(_on_file_selected.bind(path))
 
 
 func display_zip_root(zip_path: String, label_node: Label) -> void:
@@ -114,10 +111,6 @@ func display_zip_root(zip_path: String, label_node: Label) -> void:
 		reader.close()
 	else:
 		label_node.text = "Error: %d" % err
-
-
-func _on_file_selected(path: String) -> void:
-	print("User selected: ", path)
 
 
 # --- Formatting Helpers ---
