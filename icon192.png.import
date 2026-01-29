@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccvk52rq6o1p0"
-path="res://.godot/imported/xtracta-splashscreen.png-2e54c0279671fbb6b4e24b6e19c5365f.ctex"
+uid="uid://bp8terqtv10wy"
+path="res://.godot/imported/icon192.png-314ef95b0ddbdc5122a821dfa6e2f4ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://xtracta-splashscreen.png"
-dest_files=["res://.godot/imported/xtracta-splashscreen.png-2e54c0279671fbb6b4e24b6e19c5365f.ctex"]
+source_file="res://icon192.png"
+dest_files=["res://.godot/imported/icon192.png-314ef95b0ddbdc5122a821dfa6e2f4ee.ctex"]
 
 [params]
 
