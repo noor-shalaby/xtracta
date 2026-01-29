@@ -121,7 +121,7 @@ func _format_bytes(bytes: int) -> String:
 	if bytes < 1024:
 		return str(bytes) + " B"
 	elif bytes < 1024 * 1024:
-		return "%.2f KB" % (bytes / 1024.0)
+		return str(int(bytes / 1024.0)) + " KB"
 	else:
 		return "%.2f MB" % (bytes / (1024.0 * 1024.0))
 
