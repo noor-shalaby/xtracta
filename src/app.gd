@@ -11,12 +11,13 @@ var download_path: String = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS) + "/"
 
 
 func _ready() -> void:
-	# Request permission to access storage if is on Android
-	if OS.get_name() == "Android":
-		OS.request_permissions()
-	
+	request_permissions()
 	refresh_list()
 
+
+func request_permissions() -> void:
+	if OS.get_name() == "Android":
+		OS.request_permissions()
 
 func refresh_list() -> void:
 	clear_list()
@@ -39,14 +40,13 @@ func scan_dir(path: String) -> void:
 			var full_path: String = path.path_join(file_name)
 			if dir.current_is_dir():
 				scan_dir(full_path)
-			# Only process files that end in .zip
+			# Only process zip files
 			elif file_name.get_extension().to_lower() == "zip":
 				_add_file_to_ui(full_path)
 			
 			file_name = dir.get_next()
 	else:
-		if OS.get_name() == "Android":
-			OS.request_permissions()
+		request_permissions()
 
 
 func _add_file_to_ui(path: String) -> void:
