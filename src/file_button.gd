@@ -1,9 +1,13 @@
 extends Button
+class_name FileButton
 
 
 const ANIMATION_DURATION: float = 0.15
 
 @onready var file_icon: TextureRect = %FileIcon
+@onready var file_name: Label = %FileName
+@onready var last_updated: Label = %LastUpdated
+@onready var file_size: Label = %FileSize
 @onready var content_files_container: Control = %ContentFilesContainer
 @onready var content_files: Label = %ContentFiles
 @onready var default_min_height: float = custom_minimum_size.y
