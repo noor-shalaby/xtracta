@@ -63,9 +63,52 @@ func _add_file_to_ui(path: String) -> void:
 	file_button.file_name.text = path.get_file()
 	file_button.last_updated.text = date_str
 	file_button.file_size.text = file_size_str
+	display_zip_root(path, file_button.content_files)
 	
 	# Connect the signal
 	file_button.pressed.connect(_on_file_selected.bind(path))
+
+
+func display_zip_root(zip_path: String, label_node: Label) -> void:
+	var reader: ZIPReader = ZIPReader.new()
+	var err: Error = reader.open(zip_path)
+	
+	if err == OK:
+		var all_entries: PackedStringArray = reader.get_files()
+		
+		var folder_list: Array[String] = []
+		var file_list: Array[String] = []
+		
+		for entry: String in all_entries:
+			var parts: PackedStringArray = entry.split("/")
+			
+			# CASE 1: Root File (No slashes at all)
+			if parts.size() == 1:
+				file_list.append(entry)
+			
+			# CASE 2: Root Folder (Has at least one slash)
+			elif parts.size() >= 2:
+				var folder_name: String = parts[0] + "/"
+				if not folder_name in folder_list:
+					folder_list.append(folder_name)
+		
+		# Sort both lists alphabetically
+		folder_list.sort()
+		file_list.sort()
+		
+		# Build the final string
+		var final_text: String = ""
+		
+		for folder: String in folder_list:
+			final_text += folder + "\n"
+			
+		for file: String in file_list:
+			final_text += file + "\n"
+		
+		label_node.text = final_text if final_text != "" else "Archive is empty."
+		reader.close()
+	else:
+		label_node.text = "Error: %d" % err
 
 
 func _on_file_selected(path: String) -> void:
