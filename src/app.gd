@@ -56,15 +56,17 @@ func _add_file_to_ui(path: String) -> void:
 	if file:
 		file_size = file.get_length()
 		file.close()
-	
 	var time: int = FileAccess.get_modified_time(path)
 	
 	# Create the Button
 	var file_button: FileButton = FILE_BUTTON_SCENE.instantiate()
 	file_list_container.add_child(file_button)
+	
+	# Format last updated date and file size
 	var date_str: String = _format_date(time)
 	var file_size_str: String = _format_bytes(file_size)
 	
+	# Display file data
 	file_button.file_name.text = path.get_file()
 	file_button.last_updated.text = date_str
 	file_button.file_size.text = file_size_str
@@ -84,11 +86,11 @@ func display_zip_root(zip_path: String, label_node: Label) -> void:
 		for entry: String in all_entries:
 			var parts: PackedStringArray = entry.split("/")
 			
-			# CASE 1: Root File (No slashes at all)
+			# CASE 1: Root File (no slashes at all)
 			if parts.size() == 1:
 				file_list.append(entry)
 			
-			# CASE 2: Root Folder (Has at least one slash)
+			# CASE 2: Root Folder (has at least one slash)
 			elif parts.size() >= 2:
 				var folder_name: String = parts[0] + "/"
 				if not folder_name in folder_list:
@@ -103,7 +105,7 @@ func display_zip_root(zip_path: String, label_node: Label) -> void:
 		
 		for folder: String in folder_list:
 			final_text += folder + "\n"
-			
+		
 		for file: String in file_list:
 			final_text += file + "\n"
 		
