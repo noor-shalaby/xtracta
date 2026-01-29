@@ -45,7 +45,8 @@ func scan_dir(path: String) -> void:
 			
 			file_name = dir.get_next()
 	else:
-		print("Could not access the Download folder. Check permissions.")
+		if OS.get_name() == "Android":
+			OS.request_permissions()
 
 
 func _add_file_to_ui(path: String) -> void:
