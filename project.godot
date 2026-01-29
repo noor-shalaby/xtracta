@@ -17,6 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Xtracta"
 run/main_scene="uid://bwjq7i0unhh04"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+run/max_fps=30
 boot_splash/bg_color=Color(0.1254902, 0.19215687, 0.31764707, 1)
 boot_splash/image="uid://ccvk52rq6o1p0"
 config/icon="uid://bp8terqtv10wy"
