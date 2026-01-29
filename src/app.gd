@@ -15,12 +15,16 @@ func _ready() -> void:
 	if OS.get_name() == "Android":
 		OS.request_permissions()
 	
-	# Clear the current list
+	refresh_list()
+
+
+func refresh_list() -> void:
+	clear_list()
+	scan_dir(download_path)
+
+func clear_list() -> void:
 	for child: FileButton in file_list_container.get_children():
 		child.queue_free()
-	
-	# Start scanning
-	scan_dir(download_path)
 
 
 func scan_dir(path: String) -> void:
@@ -132,8 +136,4 @@ func _format_date(unix_time: int) -> String:
 
 
 func _on_refresh_button_pressed() -> void:
-	# Clear the current list
-	for child: FileButton in file_list_container.get_children():
-		child.queue_free()
-	
-	scan_dir(download_path)
+	refresh_list()
