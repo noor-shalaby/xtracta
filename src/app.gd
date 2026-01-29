@@ -6,12 +6,12 @@ const FILE_BUTTON_SCENE: PackedScene = preload("uid://ci1dgaurp7eyb")
 # UI References
 @onready var file_list_container: VBoxContainer = %FileListContainer
 
-# The path to the Download folder on Android
+# The path to the Download folder on any OS
 var download_path: String = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS) + "/"
 
 
 func _ready() -> void:
-	# Request permission to access storage
+	# Request permission to access storage if is on Android
 	if OS.get_name() == "Android":
 		OS.request_permissions()
 	
