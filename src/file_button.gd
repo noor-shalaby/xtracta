@@ -79,6 +79,7 @@ func extract_all(_output_dir: String) -> bool:
 			return false
 	
 	reader.close()
+	disable_extraction()
 	print("Extraction Complete: Files saved to ", _output_dir)
 	return true
 
