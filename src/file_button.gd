@@ -8,6 +8,7 @@ const ANIMATION_DURATION: float = 0.15
 @onready var file_name: Label = %FileName
 @onready var last_updated: Label = %LastUpdated
 @onready var file_size: Label = %FileSize
+@onready var extract_button: Button = %ExtractButton
 @onready var content_files_container: Control = %ContentFilesContainer
 @onready var content_files: Label = %ContentFiles
 @onready var default_min_height: float = custom_minimum_size.y
@@ -47,7 +48,7 @@ func extract_all(_output_dir: String) -> bool:
 	if err != OK:
 		print("Failed to open ZIP. Error code: ", err)
 		return false
-
+	
 	var files: PackedStringArray = reader.get_files()
 	
 	for file_path: String in files:
@@ -57,13 +58,13 @@ func extract_all(_output_dir: String) -> bool:
 			var target_dir: String = _output_dir.path_join(file_path)
 			DirAccess.make_dir_recursive_absolute(target_dir)
 			continue
-			
+		
 		# 2. Safety: Ensure parent folder exists for this specific file
 		# Some ZIPs don't have explicit folder entries, just paths
 		var parent_dir: String = _output_dir.path_join(file_path.get_base_dir())
 		if not DirAccess.dir_exists_absolute(parent_dir):
 			DirAccess.make_dir_recursive_absolute(parent_dir)
-			
+		
 		# 3. Read raw data from ZIP and write to storage
 		var data: PackedByteArray = reader.read_file(file_path)
 		var final_file_path: String = _output_dir.path_join(file_path)
@@ -131,6 +132,32 @@ func flatten_folder(target_path: String) -> void:
 			# 4. Delete the now-empty subfolder
 			dir.remove(subfolder_name)
 			print("Folder flattened: Moved contents of ", subfolder_name, " up.")
+
+
+func is_already_extracted() -> bool:
+	var zip_name: String = zip_path.get_file().get_basename()
+	var target_path: String = output_dir.path_join(zip_name)
+	
+	# Check 1: Does the folder even exist?
+	if not DirAccess.dir_exists_absolute(target_path):
+		return false
+	
+	# Check 2: Is the folder empty? 
+	# (Maybe the user created it but cancelled the last extraction)
+	var dir: DirAccess = DirAccess.open(target_path)
+	if dir:
+		dir.list_dir_begin()
+		var first_item: String = dir.get_next()
+		if first_item == "":
+			return false # Folder exists but it's empty
+	
+	# If it exists and isn't empty, we assume it's extracted
+	return true
+
+
+func disable_extraction() -> void:
+	extract_button.disabled = true
+	extract_button.text = "EXTRACTED"
 
 
 func _on_pressed() -> void:

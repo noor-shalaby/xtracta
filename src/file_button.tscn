@@ -36,6 +36,18 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8i6f"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 5
+
 [node name="FileButton" type="Button" unique_id=236115662]
 clip_contents = true
 custom_minimum_size = Vector2(0, 160)
@@ -122,6 +134,7 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="ExtractButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=526437149]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(230, 96)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -132,6 +145,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_7n78r")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7n78r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7n78r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_w8i6f")
 text = "EXTRACT"
 
 [node name="ContentFilesContainer" type="Control" parent="." unique_id=1570226949]

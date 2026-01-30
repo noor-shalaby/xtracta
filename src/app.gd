@@ -73,6 +73,8 @@ func _add_file_to_ui(path: String) -> void:
 	file_button.file_size.text = file_size_str
 	display_zip_root(path, file_button.content_files)
 	file_button.zip_path = path
+	if file_button.is_already_extracted():
+		file_button.disable_extraction()
 
 
 func display_zip_root(zip_path: String, label_node: Label) -> void:
