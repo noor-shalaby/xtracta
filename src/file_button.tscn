@@ -160,3 +160,4 @@ project.html"
 clip_text = true
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ExtractButton" to="." method="_on_extract_button_pressed"]

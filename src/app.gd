@@ -8,6 +8,7 @@ const FILE_BUTTON_SCENE: PackedScene = preload("uid://ci1dgaurp7eyb")
 
 # The path to the Download folder on any OS
 var download_path: String = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS) + "/"
+var output_dir: String = download_path.path_join("XtractaFiles")
 
 
 func _ready() -> void:
@@ -18,6 +19,7 @@ func _ready() -> void:
 func request_permissions() -> void:
 	if OS.get_name() == "Android":
 		OS.request_permissions()
+
 
 func refresh_list() -> void:
 	clear_list()
@@ -71,6 +73,8 @@ func _add_file_to_ui(path: String) -> void:
 	file_button.last_updated.text = date_str
 	file_button.file_size.text = file_size_str
 	display_zip_root(path, file_button.content_files)
+	file_button.zip_path = path
+	file_button.output_dir = output_dir.path_join(path.get_file().get_basename())
 
 
 func display_zip_root(zip_path: String, label_node: Label) -> void:
