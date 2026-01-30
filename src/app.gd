@@ -74,7 +74,6 @@ func _add_file_to_ui(path: String) -> void:
 	file_button.file_size.text = file_size_str
 	display_zip_root(path, file_button.content_files)
 	file_button.zip_path = path
-	file_button.output_dir = get_smart_output_path(path)
 
 
 func display_zip_root(zip_path: String, label_node: Label) -> void:
@@ -117,39 +116,6 @@ func display_zip_root(zip_path: String, label_node: Label) -> void:
 		reader.close()
 	else:
 		label_node.text = "Error: %d" % err
-
-
-func get_smart_output_path(zip_path: String) -> String:
-	var reader: ZIPReader = ZIPReader.new()
-	if reader.open(zip_path) != OK:
-		return ""
-
-	var files: PackedStringArray = reader.get_files()
-	var root_folders: Array[String] = []
-	var root_files: Array[String] = []
-	
-	# Analyze the structure
-	for file: String in files:
-		var parts: PackedStringArray = file.split("/")
-		if parts.size() == 1:
-			root_files.append(file)
-		elif parts.size() >= 2:
-			if not parts[0] in root_folders:
-				root_folders.append(parts[0])
-	
-	reader.close()
-
-	var base_output: String = output_dir
-	
-	# SMART CHECK:
-	# If there are NO files at the root and exactly ONE folder at the root
-	if root_files.size() == 0 and root_folders.size() == 1:
-		# Skip creating the zip_name folder and extract directly to Xtracta_Files
-		# because the ZIP already provides its own container folder.
-		return base_output
-	else:
-		# Create a container folder named after the ZIP to keep things tidy.
-		return base_output.path_join(zip_path.get_file().get_basename())
 
 
 # --- Formatting Helpers ---
