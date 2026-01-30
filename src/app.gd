@@ -8,7 +8,6 @@ const FILE_BUTTON_SCENE: PackedScene = preload("uid://ci1dgaurp7eyb")
 
 # The path to the Download folder on any OS
 var download_path: String = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS) + "/"
-var output_dir: String = download_path.path_join("XtractaFiles")
 
 
 func _ready() -> void:
