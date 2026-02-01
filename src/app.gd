@@ -113,7 +113,11 @@ func display_zip_root(zip_path: String, label_node: Label) -> void:
 		for file: String in file_list:
 			final_text += file + "\n"
 		
-		label_node.text = final_text if final_text != "" else "Archive is empty."
+		if final_text != "":
+			label_node.text = final_text
+		else:
+			label_node.text = "Archive is empty."
+		
 		reader.close()
 	else:
 		label_node.text = "Error: %d" % err
