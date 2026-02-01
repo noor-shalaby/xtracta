@@ -55,6 +55,7 @@ func extract_all(_output_dir: String) -> bool:
 		print("Failed to open ZIP. Error code: ", err)
 		return false
 	
+	extract_button.set_deferred("disabled", true)
 	var files: PackedStringArray = reader.get_files()
 	var total_files: int = files.size()
 	var current_file_index: int = 0
