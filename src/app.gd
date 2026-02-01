@@ -11,11 +11,11 @@ var download_path: String = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS) + "/"
 
 
 func _ready() -> void:
-	request_permissions()
+	request_android_permissions()
 	refresh_list()
 
 
-func request_permissions() -> void:
+func request_android_permissions() -> void:
 	if OS.get_name() == "Android":
 		OS.request_permissions()
 
@@ -47,7 +47,7 @@ func scan_dir(path: String) -> void:
 			
 			file_name = dir.get_next()
 	else:
-		request_permissions()
+		request_android_permissions()
 
 
 func _add_file_to_ui(path: String) -> void:
