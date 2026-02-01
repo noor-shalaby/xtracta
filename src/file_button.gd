@@ -99,6 +99,7 @@ func start_extraction_with_flatten() -> void:
 	if extract_all(target_path):
 		# Clean up nested folders
 		flatten_folder(target_path)
+		save_extraction_meta(target_path)
 		print("Extraction and flattening complete!")
 
 
@@ -138,25 +139,39 @@ func flatten_folder(target_path: String) -> void:
 			print("Folder flattened: Moved contents of ", subfolder_name, " up.")
 
 
-func is_already_extracted() -> bool:
+func needs_extraction() -> bool:
 	var zip_name: String = zip_path.get_file().get_basename()
 	var target_path: String = output_dir.path_join(zip_name)
+	var meta_path: String = target_path.path_join(".xtracta_meta")
 	
-	# Check 1: Does the folder even exist?
-	if not DirAccess.dir_exists_absolute(target_path):
-		return false
+	# 1. If folder doesn't exist, we definitely need to extract
+	if not DirAccess.dir_exists_absolute(target_path) or not FileAccess.file_exists(meta_path):
+		return true
 	
-	# Check 2: Is the folder empty? 
-	# (Maybe the user created it but cancelled the last extraction)
-	var dir: DirAccess = DirAccess.open(target_path)
-	if dir:
-		dir.list_dir_begin()
-		var first_item: String = dir.get_next()
-		if first_item == "":
-			return false # Folder exists but it's empty
+	# 2. Get the current ZIP's modified time
+	var current_zip_time: int = FileAccess.get_modified_time(zip_path)
 	
-	# If it exists and isn't empty, we assume it's extracted
-	return true
+	# 3. Read the stored time from the hidden file
+	var file: FileAccess = FileAccess.open(meta_path, FileAccess.READ)
+	if file:
+		var stored_time: int = file.get_as_text().to_int()
+		file.close()
+		
+		# If the ZIP is newer than our record, it has been updated
+		return current_zip_time > stored_time
+	
+	return true # Default to true if something went wrong reading the file
+
+
+func save_extraction_meta(target_path: String) -> void:
+	var meta_path: String = target_path.path_join(".xtracta_meta")
+	var current_zip_time: int = FileAccess.get_modified_time(zip_path)
+	
+	var file: FileAccess = FileAccess.open(meta_path, FileAccess.WRITE)
+	if file:
+		file.store_string(str(current_zip_time))
+		file.close()
+		print("Metadata saved: ", current_zip_time)
 
 
 func disable_extraction() -> void:
