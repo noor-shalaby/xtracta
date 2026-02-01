@@ -17,7 +17,7 @@ var expand_animtion_duration: float
 var tween: Tween
 var is_expanded: bool = false
 var zip_path: String
-var output_dir: String = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS).path_join("XtractaFiles")
+var output_dir: String = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS).path_join("Xtracta")
 
 
 func _ready() -> void:
