@@ -207,4 +207,4 @@ func _on_extract_button_pressed() -> void:
 
 
 func _on_progress_updated(_percentage: float) -> void:
-	pass
+	extract_button.text = str(int(_percentage)) + "%"
