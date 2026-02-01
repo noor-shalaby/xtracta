@@ -74,7 +74,7 @@ func _add_file_to_ui(path: String) -> void:
 	display_zip_root(path, file_button.content_files)
 	file_button.zip_path = path
 	if not file_button.needs_extraction():
-		file_button.disable_extraction()
+		file_button.call_deferred("disable_extraction")
 
 
 func display_zip_root(zip_path: String, label_node: Label) -> void:

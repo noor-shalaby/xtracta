@@ -16,8 +16,12 @@ var expand_animtion_duration: float
 
 var tween: Tween
 var is_expanded: bool = false
+var extraction_thread: Thread
 var zip_path: String
 var output_dir: String = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS).path_join("Xtracta")
+
+signal extraction_progress_updated(progress: float)
+signal extraction_finished(success: bool)
 
 
 func _ready() -> void:
@@ -53,7 +57,8 @@ func extract_all(_output_dir: String) -> bool:
 		return false
 	
 	var files: PackedStringArray = reader.get_files()
-	
+	var total_files: int = files.size()
+	var current_file_index: int = 0
 	for file_path: String in files:
 		# 1. Handle Folders inside the ZIP
 		# In ZIP structures, folders are entries ending in "/"
@@ -80,27 +85,35 @@ func extract_all(_output_dir: String) -> bool:
 			print("Critical: Could not write file to ", final_file_path)
 			reader.close()
 			return false
+		
+		# Update Progress
+		current_file_index += 1
+		var percentage: float = (float(current_file_index) / total_files) * 100
+		call_deferred("emit_signal", "extraction_progress_updated", percentage)
 	
 	reader.close()
 	disable_extraction()
+	call_deferred("emit_signal", "extraction_finished", _output_dir)
+	flatten_folder(_output_dir)
+	save_extraction_meta(_output_dir)
 	print("Extraction Complete: Files saved to ", _output_dir)
 	return true
 
 
 func start_extraction_with_flatten() -> void:
 	var zip_name: String = zip_path.get_file().get_basename()
-	var base_output: String = output_dir
-	var target_path: String = base_output.path_join(zip_name)
+	var target_path: String = output_dir.path_join(zip_name)
 	
 	# Always create the folder
 	DirAccess.make_dir_recursive_absolute(target_path)
 	
-	# Extract everything
-	if extract_all(target_path):
-		# Clean up nested folders
-		flatten_folder(target_path)
-		save_extraction_meta(target_path)
-		print("Extraction and flattening complete!")
+	# Connect signals if not already connected
+	if not extraction_progress_updated.is_connected(_on_progress_updated):
+		extraction_progress_updated.connect(_on_progress_updated)
+	
+	# Start the thread
+	extraction_thread = Thread.new()
+	extraction_thread.start(extract_all.bind(target_path))
 
 
 func flatten_folder(target_path: String) -> void:
@@ -137,6 +150,8 @@ func flatten_folder(target_path: String) -> void:
 			# 4. Delete the now-empty subfolder
 			dir.remove(subfolder_name)
 			print("Folder flattened: Moved contents of ", subfolder_name, " up.")
+	
+	print("Extraction and flattening complete!")
 
 
 func needs_extraction() -> bool:
@@ -175,8 +190,8 @@ func save_extraction_meta(target_path: String) -> void:
 
 
 func disable_extraction() -> void:
-	extract_button.disabled = true
-	extract_button.text = "EXTRACTED"
+	extract_button.set_deferred("disabled", true)
+	extract_button.set_deferred("text", "EXTRACTED")
 
 
 func _on_pressed() -> void:
@@ -189,3 +204,7 @@ func _on_pressed() -> void:
 
 func _on_extract_button_pressed() -> void:
 	start_extraction_with_flatten()
+
+
+func _on_progress_updated(_percentage: float) -> void:
+	pass
