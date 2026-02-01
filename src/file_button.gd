@@ -92,7 +92,6 @@ func extract_all(_output_dir: String) -> bool:
 	
 	reader.close()
 	disable_extraction()
-	call_deferred("emit_signal", "extraction_finished", _output_dir)
 	flatten_folder(_output_dir)
 	save_extraction_meta(_output_dir)
 	print("Extraction Complete: Files saved to ", _output_dir)
