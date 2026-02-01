@@ -21,7 +21,6 @@ var zip_path: String
 var output_dir: String = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS).path_join("Xtracta")
 
 signal extraction_progress_updated(progress: float)
-signal extraction_finished(success: bool)
 
 
 func _ready() -> void:
