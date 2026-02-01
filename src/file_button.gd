@@ -2,7 +2,8 @@ extends Button
 class_name FileButton
 
 
-const ANIMATION_DURATION: float = 0.15
+const MIN_ANIMATION_DURATION: float = 0.16
+var expand_animtion_duration: float
 
 @onready var file_icon: TextureRect = %FileIcon
 @onready var file_name: Label = %FileName
@@ -32,13 +33,15 @@ func reset_tween() -> void:
 func expand() -> void:
 	is_expanded = true
 	reset_tween()
-	tween.tween_property(self, "custom_minimum_size:y", default_min_height + content_files.size.y, ANIMATION_DURATION)
-	tween.tween_property(content_files_container, "custom_minimum_size:y", content_files.size.y, ANIMATION_DURATION)
+	expand_animtion_duration = max((content_files.get_line_count() - 1) * 0.02, MIN_ANIMATION_DURATION)
+	tween.tween_property(self, "custom_minimum_size:y", default_min_height + content_files.size.y, expand_animtion_duration)
+	tween.tween_property(content_files_container, "custom_minimum_size:y", content_files.size.y, expand_animtion_duration)
 
 func collapse() -> void:
 	is_expanded = false
 	reset_tween()
-	tween.tween_property(self, "custom_minimum_size:y", default_min_height, ANIMATION_DURATION)
+	var collapse_animation_duration: float = max(expand_animtion_duration / 2.0, MIN_ANIMATION_DURATION)
+	tween.tween_property(self, "custom_minimum_size:y", default_min_height, collapse_animation_duration)
 
 
 func extract_all(_output_dir: String) -> bool:
