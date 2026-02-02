@@ -1,2 +1,2 @@
 # Xtracta
-Universal extraction mobile app.
+ZIP file extraction mobile app.
