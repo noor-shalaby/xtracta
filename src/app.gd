@@ -12,6 +12,7 @@ var download_path: String = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS) + "/"
 
 func _ready() -> void:
 	request_android_permissions()
+	@warning_ignore("missing_await")
 	refresh_list()
 
 
@@ -22,11 +23,13 @@ func request_android_permissions() -> void:
 
 func refresh_list() -> void:
 	clear_list()
+	await get_tree().create_timer(0.2).timeout
 	scan_dir(download_path)
 
 func clear_list() -> void:
 	for child: FileButton in file_list_container.get_children():
-		child.queue_free()
+		@warning_ignore("missing_await")
+		child.fade_out()
 
 
 func scan_dir(path: String) -> void:
@@ -140,4 +143,5 @@ func _format_date(unix_time: int) -> String:
 
 
 func _on_refresh_button_pressed() -> void:
+	@warning_ignore("missing_await")
 	refresh_list()

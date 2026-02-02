@@ -203,6 +203,12 @@ func fade_in(dur: float = 0.5) -> void:
 	var _tween: Tween = create_tween()
 	_tween.tween_property(self, "modulate:a", 1.0, dur)
 
+func fade_out(dur: float = 0.2) -> void:
+	var _tween: Tween = create_tween()
+	_tween.tween_property(self, "modulate:a", 0.0, dur)
+	await _tween.finished
+	queue_free()
+
 
 func _on_pressed() -> void:
 	match is_expanded:
