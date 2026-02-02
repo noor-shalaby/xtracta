@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://7jliqa5r7ash" path="res://assets/zip-file-svgrepo-com.svg" id="1_ui347"]
 [ext_resource type="FontFile" uid="uid://c42biue181eeu" path="res://assets/Montserrat-Medium.ttf" id="3_tysqo"]
 [ext_resource type="FontFile" uid="uid://ck3o7rpr3plk6" path="res://assets/Montserrat-Bold.ttf" id="4_tysqo"]
-[ext_resource type="Script" uid="uid://dg4ibkdu56w6g" path="res://src/buttona.gd" id="5_w8i6f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_palxs"]
 content_margin_left = 4.0
@@ -151,7 +150,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_7n78r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7n78r")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_w8i6f")
 text = "EXTRACT"
-script = ExtResource("5_w8i6f")
 
 [node name="ContentFilesContainer" type="Control" parent="." unique_id=1570226949]
 unique_name_in_owner = true

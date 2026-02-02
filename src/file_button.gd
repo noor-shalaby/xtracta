@@ -29,7 +29,7 @@ func _ready() -> void:
 	# Center origin pivot
 	set_deferred("pivot_offset", size / 2)
 	
-	pop()
+	fade_in()
 
 
 func reset_tween() -> void:
@@ -198,10 +198,10 @@ func disable_extraction() -> void:
 	extract_button.set_deferred("text", "EXTRACTED")
 
 
-func pop(dur: float = 0.1) -> void:
-	scale = Vector2.ZERO
+func fade_in(dur: float = 0.5) -> void:
+	modulate.a = 0.0
 	var _tween: Tween = create_tween()
-	_tween.tween_property(self, "scale", Vector2.ONE, dur)
+	_tween.tween_property(self, "modulate:a", 1.0, dur)
 
 
 func _on_pressed() -> void:
