@@ -25,6 +25,11 @@ signal extraction_progress_updated(progress: float)
 
 func _ready() -> void:
 	content_files.size.y = 0
+	
+	# Center origin pivot
+	set_deferred("pivot_offset", size / 2)
+	
+	pop()
 
 
 func reset_tween() -> void:
@@ -191,6 +196,12 @@ func save_extraction_meta(target_path: String) -> void:
 func disable_extraction() -> void:
 	extract_button.set_deferred("disabled", true)
 	extract_button.set_deferred("text", "EXTRACTED")
+
+
+func pop(dur: float = 0.1) -> void:
+	scale = Vector2.ZERO
+	var _tween: Tween = create_tween()
+	_tween.tween_property(self, "scale", Vector2.ONE, dur)
 
 
 func _on_pressed() -> void:

@@ -59,7 +59,7 @@ func _add_file_to_ui(path: String) -> void:
 		file.close()
 	var time: int = FileAccess.get_modified_time(path)
 	
-	# Create the Button
+	# Create the file button and add it to the file list container
 	var file_button: FileButton = FILE_BUTTON_SCENE.instantiate()
 	file_list_container.add_child(file_button)
 	
