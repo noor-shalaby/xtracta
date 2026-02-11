@@ -3,6 +3,7 @@ extends Control
 
 const FILE_BUTTON_SCENE: PackedScene = preload("uid://ci1dgaurp7eyb")
 
+@onready var scene_tree: SceneTree = get_tree()
 # UI References
 @onready var file_list_container: VBoxContainer = %FileListContainer
 @onready var dialog: VBoxContainer = %Dialog
@@ -25,9 +26,9 @@ func request_android_permissions() -> void:
 
 func refresh_list() -> void:
 	await clear_list()
-	await get_tree().create_timer(0.2).timeout
+	await scene_tree.create_timer(0.2).timeout
 	scan_dir(download_path)
-	if file_list_container.get_child_count() == 0:
+	if DirAccess.open(download_path) and file_list_container.get_child_count() == 0:
 		await show_dialog("No ZIP files found in the Download/ directory
 		or any of its subdirectories..")
 
