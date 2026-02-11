@@ -5,7 +5,9 @@ const FILE_BUTTON_SCENE: PackedScene = preload("uid://ci1dgaurp7eyb")
 
 # UI References
 @onready var file_list_container: VBoxContainer = %FileListContainer
-@onready var msg_label: Label = %MessageLabel
+@onready var dialog: VBoxContainer = %Dialog
+@onready var dialog_label: Label = %DialogLabel
+@onready var dialog_button: Buttona = %DialogButton
 
 # The path to the Download folder on any OS
 var download_path: String = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS) + "/"
@@ -26,11 +28,12 @@ func refresh_list() -> void:
 	await get_tree().create_timer(0.2).timeout
 	scan_dir(download_path)
 	if file_list_container.get_child_count() == 0:
-		show_msg_label()
+		await show_dialog("No ZIP files found in the Download/ directory
+		or any of its subdirectories..")
 
 func clear_list() -> void:
-	if msg_label.visible:
-		await hide_msg_label()
+	if dialog.visible:
+		await hide_dialog()
 	
 	for child: FileButton in file_list_container.get_children():
 		@warning_ignore("missing_await")
@@ -55,19 +58,36 @@ func scan_dir(path: String) -> void:
 			
 			file_name = dir.get_next()
 	else:
-		request_android_permissions()
+		if OS.get_name() == "Android":
+			@warning_ignore("missing_await")
+			show_dialog("Xtracta needs 'All Files Access' to find
+			and extract ZIP files in your Download folder.
+			Please enable it in the next screen.",
+			"Open Settings")
+			request_android_permissions()
 
 
-func show_msg_label(dur: float = 0.5) -> void:
-	msg_label.show()
+func show_dialog(msg: String = "No ZIP files found..", button_text: String = "", dur: float = 0.5) -> void:
+	if dialog_label.visible:
+		await hide_dialog()
+	
+	if button_text:
+		dialog_button.text = button_text
+		dialog_button.show()
+	else:
+		dialog_button.hide()
+	
+	dialog_label.text = msg
+	
+	dialog.show()
 	var tween: Tween = create_tween()
-	tween.tween_property(msg_label, "modulate:a", 1.0, dur)
+	tween.tween_property(dialog, "modulate:a", 1.0, dur)
 
-func hide_msg_label(dur: float = 0.2) -> void:
+func hide_dialog(dur: float = 0.2) -> void:
 	var tween: Tween = create_tween()
-	tween.tween_property(msg_label, "modulate:a", 0.0, dur)
+	tween.tween_property(dialog, "modulate:a", 0.0, dur)
 	await tween.finished
-	msg_label.hide()
+	dialog.hide()
 
 
 func _add_file_to_ui(path: String) -> void:
@@ -162,3 +182,7 @@ func _format_date(unix_time: int) -> String:
 func _on_refresh_button_pressed() -> void:
 	@warning_ignore("missing_await")
 	refresh_list()
+
+
+func _on_dialog_button_pressed() -> void:
+	OS.shell_open("package:" + OS.get_unique_id())
