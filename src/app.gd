@@ -5,6 +5,7 @@ const FILE_BUTTON_SCENE: PackedScene = preload("uid://ci1dgaurp7eyb")
 
 # UI References
 @onready var file_list_container: VBoxContainer = %FileListContainer
+@onready var msg_label: Label = %MessageLabel
 
 # The path to the Download folder on any OS
 var download_path: String = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS) + "/"
@@ -12,8 +13,7 @@ var download_path: String = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS) + "/"
 
 func _ready() -> void:
 	request_android_permissions()
-	@warning_ignore("missing_await")
-	refresh_list()
+	await refresh_list()
 
 
 func request_android_permissions() -> void:
@@ -22,11 +22,16 @@ func request_android_permissions() -> void:
 
 
 func refresh_list() -> void:
-	clear_list()
+	await clear_list()
 	await get_tree().create_timer(0.2).timeout
 	scan_dir(download_path)
+	if file_list_container.get_child_count() == 0:
+		show_msg_label()
 
 func clear_list() -> void:
+	if msg_label.visible:
+		await hide_msg_label()
+	
 	for child: FileButton in file_list_container.get_children():
 		@warning_ignore("missing_await")
 		child.fade_out()
@@ -51,6 +56,18 @@ func scan_dir(path: String) -> void:
 			file_name = dir.get_next()
 	else:
 		request_android_permissions()
+
+
+func show_msg_label(dur: float = 0.5) -> void:
+	msg_label.show()
+	var tween: Tween = create_tween()
+	tween.tween_property(msg_label, "modulate:a", 1.0, dur)
+
+func hide_msg_label(dur: float = 0.2) -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property(msg_label, "modulate:a", 0.0, dur)
+	await tween.finished
+	msg_label.hide()
 
 
 func _add_file_to_ui(path: String) -> void:
