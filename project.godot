@@ -21,7 +21,7 @@ run/max_fps=60
 run/low_processor_mode=true
 boot_splash/bg_color=Color(0.1254902, 0.19215687, 0.31764707, 1)
 boot_splash/image="uid://ccvk52rq6o1p0"
-config/icon="uid://bp8terqtv10wy"
+config/icon="uid://op4kn5b8p5y0"
 
 [debug]
 

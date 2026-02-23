@@ -28,7 +28,7 @@ func refresh_list() -> void:
 	await clear_list()
 	await scene_tree.create_timer(0.2).timeout
 	scan_dir(download_path)
-	if DirAccess.open(download_path) and file_list_container.get_child_count() == 0:
+	if not dialog.visible and file_list_container.get_child_count() == 0:
 		await show_dialog("No ZIP files found in the Download/ directory
 		or any of its subdirectories..")
 
