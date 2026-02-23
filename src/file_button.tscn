@@ -99,7 +99,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("3_tysqo")
 theme_override_font_sizes/font_size = 40
-text = "project (1).zip"
+text = "project (1)"
+clip_text = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=629656545]
 layout_mode = 2
