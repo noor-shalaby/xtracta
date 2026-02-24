@@ -4,7 +4,9 @@
 [ext_resource type="FontFile" uid="uid://dqrwl60cd7emn" path="res://assets/Montserrat-ExtraBold.ttf" id="2_7unma"]
 [ext_resource type="Texture2D" uid="uid://dojqom42x5hwu" path="res://assets/background.png" id="2_o6we8"]
 [ext_resource type="FontFile" uid="uid://ck3o7rpr3plk6" path="res://assets/Montserrat-Bold.ttf" id="4_7unma"]
+[ext_resource type="Texture2D" uid="uid://dp77nbmdv48tq" path="res://assets/sound-volume-2-svgrepo-com.svg" id="4_7ve60"]
 [ext_resource type="FontFile" uid="uid://c42biue181eeu" path="res://assets/Montserrat-Medium.ttf" id="4_cbbum"]
+[ext_resource type="Script" uid="uid://b50dybychcipb" path="res://src/sound_button.gd" id="5_7ve60"]
 [ext_resource type="Script" uid="uid://dg4ibkdu56w6g" path="res://src/buttona.gd" id="6_5nldp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twjmp"]
@@ -49,14 +51,29 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_twjmp")
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer" unique_id=1423104731]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer" unique_id=1509142527]
 layout_mode = 2
-size_flags_vertical = 1
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
+
+[node name="Title" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=1423104731]
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_7unma")
 theme_override_font_sizes/font_size = 64
 text = "XTRACTA"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SoundButton" type="TextureButton" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=384087240]
+modulate = Color(0.93333334, 0.93333334, 0.93333334, 1)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("4_7ve60")
+script = ExtResource("5_7ve60")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1349935606]
 layout_mode = 2
@@ -118,7 +135,7 @@ theme_override_fonts/font = ExtResource("4_7unma")
 theme_override_font_sizes/font_size = 32
 text = "REFRESH"
 
-[node name="Margin" type="Control" parent="VBoxContainer" unique_id=1216403619]
+[node name="MarginBottom" type="Control" parent="VBoxContainer" unique_id=1216403619]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 

@@ -183,6 +183,8 @@ func _format_date(unix_time: int) -> String:
 func _on_refresh_button_pressed() -> void:
 	@warning_ignore("missing_await")
 	refresh_list()
+	
+	AudioManager.play_extraction_init()
 
 
 func _on_dialog_button_pressed() -> void:

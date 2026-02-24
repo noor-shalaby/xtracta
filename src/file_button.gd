@@ -39,6 +39,7 @@ func reset_tween() -> void:
 
 
 func expand() -> void:
+	AudioManager.play_extraction_init()
 	is_expanded = true
 	reset_tween()
 	expand_animtion_duration = max((content_files.get_line_count() - 1) * 0.02, MIN_ANIMATION_DURATION)
@@ -46,6 +47,7 @@ func expand() -> void:
 	tween.tween_property(content_files_container, "custom_minimum_size:y", content_files.size.y, expand_animtion_duration)
 
 func collapse() -> void:
+	AudioManager.play_extraction_complete()
 	is_expanded = false
 	reset_tween()
 	var collapse_animation_duration: float = max(expand_animtion_duration / 2.0, MIN_ANIMATION_DURATION)
@@ -100,6 +102,7 @@ func extract_all(_output_dir: String) -> bool:
 	disable_extraction()
 	flatten_folder(_output_dir)
 	save_extraction_meta(_output_dir)
+	AudioManager.play_extraction_complete()
 	print("Extraction Complete: Files saved to ", _output_dir)
 	return true
 
@@ -211,6 +214,8 @@ func fade_out(dur: float = 0.2) -> void:
 
 
 func _on_pressed() -> void:
+	AudioManager.play_extraction_init()
+	
 	match is_expanded:
 		false:
 			expand()

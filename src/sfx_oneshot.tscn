@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://chordet0fkhsj"]
+
+[ext_resource type="AudioStream" uid="uid://cnrulqs6q1lsy" path="res://assets/select_3.wav" id="1_xtlsv"]
+[ext_resource type="Script" uid="uid://ca0bh8igobfd4" path="res://src/sfx_oneshot.gd" id="2_xtlsv"]
+
+[node name="SFXOneShot" type="AudioStreamPlayer" unique_id=1013056764]
+stream = ExtResource("1_xtlsv")
+script = ExtResource("2_xtlsv")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
