@@ -47,6 +47,9 @@ func _on_pressed() -> void:
 	Settings.audio = !Settings.audio
 	pick_texture()
 	
+	if Settings.audio:
+		AudioManager.play_extraction_init()
+	
 	if pop_on_pressed:
 		pop_animation()
 
